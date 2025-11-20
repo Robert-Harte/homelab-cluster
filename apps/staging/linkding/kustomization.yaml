@@ -5,3 +5,4 @@ resources:
   - ../../base/linkding/
   - ingress.yaml
   - cloudflare.yaml
+  - test-secret.yaml
