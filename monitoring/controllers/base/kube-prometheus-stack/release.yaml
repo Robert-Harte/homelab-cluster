@@ -37,3 +37,8 @@ spec:
 
         hosts:
           - grafana.robertharte.net
+
+        tls:
+        - secretName: grafana-tls-secret
+          hosts:
+            - grafana.robertharte.com
