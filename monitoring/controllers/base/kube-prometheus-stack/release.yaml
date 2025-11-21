@@ -33,7 +33,6 @@ spec:
       adminPassword: robert
       ingress:
         enabled: true
-
         ingressClassName: traefik
 
         ## Hostnames.
