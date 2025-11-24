@@ -17,12 +17,12 @@ spec:
       volumes:
         - name: mealie-data
           persistentVolumeClaim:
-            claimName: mealie-data
+            claimName: mealie-data-pvc
       containers:
       - image: ghcr.io/mealie-recipes/mealie:v3.4.0
         name: mealie
         ports:
           - containerPort: 9000
         volumeMounts:
-          - mountPath: "/app/data"
+          - mountPath: "/etc/mealie/data"
             name: mealie-data
