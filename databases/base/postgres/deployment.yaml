@@ -1,9 +1,8 @@
-apiVersion: postgressql.cnpg.io/v1
+apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgres-cluster
 spec:
-  instance: 2
+  instance: 3
   storage:
-    size: 2Gi
-  imageName: ghcr.io/cloudnative-pg/postgresql:13.6
+    size: 1Gi
