@@ -1,8 +1,30 @@
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: postgres-cluster
+  name: postgres
 spec:
-  instances: 2
-  storage:
-    size: 1Gi
+  replicas: 2
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: 'postgres:14.19-alpine3.21'
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: postgres-container-env
+          volumeMounts:
+            - mountPath: "/etc/postgres/data"
+              name: postgres-data
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-data-pvc
