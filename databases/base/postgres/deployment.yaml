@@ -4,7 +4,7 @@ metadata:
   name: postgres-cluster
   namespace: database
 spec:
-  replicas: 2
+  instances: 2
   selector:
     matchLabels:
       app: postgres
