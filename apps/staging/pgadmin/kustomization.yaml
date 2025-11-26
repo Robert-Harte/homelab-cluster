@@ -4,6 +4,4 @@ namespace: pgadmin
 resources:
   - ../../base/pgadmin/
   - pgadmin-container-env-secret.yaml
-  - cloudflare-secret.yaml
-  - cloudflare.yaml
   - ingress.yaml
