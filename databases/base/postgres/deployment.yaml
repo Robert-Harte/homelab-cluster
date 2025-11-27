@@ -22,8 +22,8 @@ spec:
             - secretRef:
                 name: postgres-container-env
           volumeMounts:
-            - mountPath: "/etc/postgres/data"
-              name: postgres-data
+            - name: postgres-data
+              mountPath: "/etc/postgres/data"
       volumes:
         - name: postgres-data
           persistentVolumeClaim:
