@@ -19,15 +19,12 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5432
-          env:
-            - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
           envFrom:
             - secretRef:
                 name: postgres-container-env
           volumeMounts:
             - name: postgres-data
-              mountPath: "/etc/postgres/data"
+              mountPath: "/var/lib/postgresql/data"
   volumeClaimTemplates:
   - metadata:
       name: postgres-data
