@@ -26,8 +26,8 @@ spec:
             - name: postgres-data
               mountPath: "/etc/postgres/data"
   volumeClaimTemplates:
-    - metadata:
-        name: postgres-data
+  - metadata:
+      name: postgres-data
     spec:
       accessModes:
         - ReadWriteOnce
