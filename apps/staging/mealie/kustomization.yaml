@@ -4,3 +4,6 @@ namespace: mealie
 resources:
   - ../../base/mealie/
   - mealie-container-env-secret.yaml
+  - cloudflare.yaml
+  - cloudflare-secret.yaml
+  - ingress.yaml
