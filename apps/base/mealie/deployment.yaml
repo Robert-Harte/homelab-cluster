@@ -23,9 +23,9 @@ spec:
         name: mealie
         ports:
           - containerPort: 9000
-        envFrom:
-          - secretRef:
-              name: mealie-container-env
+#        envFrom:
+#          - secretRef:
+#              name: mealie-container-env
         securityContext:
           allowPrivilegeEscalation: false
         volumeMounts:
