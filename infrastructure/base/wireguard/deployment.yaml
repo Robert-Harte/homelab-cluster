@@ -6,55 +6,56 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wireguard
+      app: wireguard-
   template:
     metadata:
       labels:
         app: wireguard
     spec:
-      initContainers:
-        # The exact name of the network interface needs to be stored in the
-        # wg0.conf WireGuard configuration file, so that the routes can be
-        # created correctly.
-        # The template file only contains the "ENI" placeholder, so when
-        # bootstrapping the application we'll need to replace the placeholder
-        # and create the actual wg0.conf configuration file.
-        - name: "wireguard-template-replacement"
-          image: "busybox"
-          command: ["sh", "-c", "ENI=$(ip route get 8.8.8.8 | grep 8.8.8.8 | awk '{print $5}'); sed \"s/ENI/$ENI/g\" /etc/wireguard-secret/wg0.conf.template > /etc/wireguard/wg0.conf; chmod 400 /etc/wireguard/wg0.conf"]
-          volumeMounts:
-            - name: wireguard-data
-              mountPath: /etc/wireguard/
-            - name: wireguard-secret
-              mountPath: /etc/wireguard-secret/
       containers:
         - name: wireguard
-          image: linuxserver/wireguard:latest
+          image: ghcr.io/wg-easy/wg-easy
           ports:
             - containerPort: 51820
-          env:
-            - name: "TZ"
-              value: "Europe/London"
-            # Keep the PEERS environment variable to force server mode
-            - name: "PEERS"
-              value: "example"
-            - name: "PEERDNS"
-              value: "8.8.8.8"
-          envFrom:
-            - secretRef:
-                name: wireguard-container-env
-          secutiryContext:
-            privileged: true
+              name: wireguard
+              protocol: UDP
+            - containerPort: 51821
+              name: http
+              protocol: HTTP
+          livenessProbe:
+            failureThreshold: 3
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: http
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: http
+            timeoutSeconds: 1
+          startupProbe:
+            failureThreshold: 30
+            periodSeconds: 5
+            successThreshold: 1
+            tcpSocket:
+              port: http
+            timeoutSeconds: 1
+          # Give pod permissions to modify iptables and load the wireguard kernel module
+          securityContext:
             capabilities:
               add:
                 - NET_ADMIN
+                - SYS_MODULE
+          envFrom:
+            - secretRef:
+                name: wireguard-container-env
           volumeMounts:
             - name: wireguard-data
-              mountPath: "/config/"
-              readOnly: true
+              mountPath: "/etc/wireguard/"
       volumes:
         - name: wireguard-data
-          emptyDir: {}
-        - name: wireguard-secret
-          secret:
-            secretName: wireguard-container-env
+          persistentVolumeClaim:
+            claimName: wireguard-data-pvc
