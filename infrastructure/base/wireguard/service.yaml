@@ -4,10 +4,10 @@ metadata:
   name: wireguard
 spec:
   ports:
-    - protocol: UDP
+    - name: wireguard
+      protocol: UDP
       port: 51820
       targetPort: 51820
-      nodePort: 32813
   selector:
     app: wireguard
-  type: NodePort
+  type: LoadBalancer
