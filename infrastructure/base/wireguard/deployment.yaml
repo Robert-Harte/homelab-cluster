@@ -21,7 +21,7 @@ spec:
               protocol: UDP
             - containerPort: 51821
               name: http
-              protocol: HTTP
+              protocol: TCP
           livenessProbe:
             failureThreshold: 3
             periodSeconds: 10
