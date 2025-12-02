@@ -40,6 +40,9 @@ spec:
               value: "example"
             - name: "PEERDNS"
               value: "8.8.8.8"
+          envFrom:
+            - secretRef:
+                name: wireguard-container-env
           secutiryContext:
             privileged: true
             capabilities:
