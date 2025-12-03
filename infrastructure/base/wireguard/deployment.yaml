@@ -38,6 +38,6 @@ spec:
               mountPath: "/config/"
               readOnly: true
       volumes:
-        - name: wireguard-secret
+        - name: wireguard-data
           secret:
             secretName: wireguard-container-env
