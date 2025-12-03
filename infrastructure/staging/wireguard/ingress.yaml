@@ -12,6 +12,6 @@ spec:
               service:
                 name: wireguard
                 port:
-                  number: 51821
+                  number: 51820
             path: /
             pathType: Prefix
