@@ -6,23 +6,8 @@ spec:
   ports:
     - name: wireguard
       protocol: UDP
-      port: 30000
-      nodePort: 30000
-      targetPort: wireguard
+      port: 51820
+      targetPort: 51820
   selector:
     app: wireguard
-  type: NodePort
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: wg-easy-http
-spec:
-  ports:
-    - name: http
-      port: 51821
-      protocol: TCP
-      targetPort: http
-  selector:
-    app.kubernetes.io/name: wireguard
-  type: ClusterIP
+  type: LoadBalancer
