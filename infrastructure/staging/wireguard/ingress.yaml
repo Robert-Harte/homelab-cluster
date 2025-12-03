@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: wireguard-
+  name: wireguard
 spec:
   ingressClassName: traefik
   rules:
