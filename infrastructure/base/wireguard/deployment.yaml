@@ -52,6 +52,11 @@ spec:
           envFrom:
             - secretRef:
                 name: wireguard-container-env
+          env:
+            - name: WG_HOST
+              value: wireguard.robertharte.net
+            - name: WG_PORT
+              value: "30000"
           volumeMounts:
             - name: wireguard-data
               mountPath: "/etc/wireguard/"
