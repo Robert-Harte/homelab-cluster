@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wireguard-http
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: wireguard-http.robertharte.net
+      http:
+        paths:
+          - backend:
+              service:
+                name: wireguard-http
+                port:
+                  number: 51821
+            path: /
+            pathType: Prefix
