@@ -28,7 +28,7 @@ spec:
           envFrom:
             - secretRef:
                 name: wireguard-container-env
-          secutiryContext:
+          securityContext:
             privileged: true
             capabilities:
               add:
