@@ -10,4 +10,4 @@ spec:
       targetPort: 51820
   selector:
     app: wireguard
-  type: LoadBalancer
+  type: ClusterIP
