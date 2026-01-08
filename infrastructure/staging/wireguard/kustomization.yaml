@@ -5,5 +5,3 @@ resources:
   - ../../base/wireguard/
   - wireguard-container-env-secret.yaml
   - ingress.yaml
-  - cloudflare.yaml
-  - cloudflare-secret.yaml
