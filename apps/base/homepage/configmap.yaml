@@ -22,7 +22,7 @@ data:
   services.yaml: |
     - My First Group:
         - My First Service:
-            href: https://localhost/
+            href: https://homepage.robertharte.net/
             description: Homepage is awesome
 
     - My Second Group:
