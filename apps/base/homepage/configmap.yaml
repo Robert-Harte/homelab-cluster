@@ -19,21 +19,16 @@ data:
         - Github:
             - abbr: GH
               href: https://github.com/
+    - Links:
+        - LinkDing:
+            - abbr: LD
+              href: https://linkding.robertharte.net/
   services.yaml: |
-    - My First Group:
-        - My First Service:
-            href: https://homepage.robertharte.net/
-            description: Homepage is awesome
-
-    - My Second Group:
-        - My Second Service:
-            href: http://grafana.robertharte.net/
+    - Monitoring:
+        - Grafana:
+            href: https://grafana.robertharte.net/
             description: Grafana
 
-    - My Third Group:
-        - My Third Service:
-            href: http://linkding.robertharte.net/
-            description: LinkDing
   widgets.yaml: |
     - kubernetes:
         cluster:
