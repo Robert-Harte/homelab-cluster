@@ -19,10 +19,14 @@ data:
         - Github:
             - abbr: GH
               href: https://github.com/
-    - Links:
+
+    - Internal:
         - LinkDing:
-            - abbr: LD
-              href: https://linkding.robertharte.net/
+            - href: https://linkding.robertharte.net/
+              description: LinkDing
+        - Mealie:
+            - href: https://mealie.robertharte.net/
+              description: Mealie
   services.yaml: |
     - Monitoring:
         - Grafana:
