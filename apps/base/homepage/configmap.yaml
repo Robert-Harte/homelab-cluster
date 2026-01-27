@@ -31,8 +31,9 @@ data:
     - Monitoring:
         - Grafana:
             href: https://grafana.robertharte.net/
-            description: Grafana
-
+    - Database:
+        - pgAdmin:
+            href: https://pgadmin.robertharte.net/
   widgets.yaml: |
     - kubernetes:
         cluster:
