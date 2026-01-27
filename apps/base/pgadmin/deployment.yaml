@@ -12,10 +12,6 @@ spec:
       labels:
         app: pgadmin
     spec:
-      volumes:
-        - name: pgadmin-data
-          persistentVolumeClaim:
-            claimName: pgadmin-data-pvc
       containers:
         - name: pgadmin
           image: dpage/pgadmin4:latest
@@ -24,6 +20,3 @@ spec:
           envFrom:
             - secretRef:
                 name: pgadmin-container-env
-          volumeMounts:
-            - name: pgadmin-data
-              mountPath: "/etc/pgadmin/data"
