@@ -8,9 +8,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "latest"
-
-      # version: "58.x"
+      version: "81.*"
 
       sourceRef:
         kind: HelmRepository
@@ -41,4 +39,4 @@ spec:
         tls:
         - secretName: grafana-tls-secret
           hosts:
-            - grafana.robertharte.com
+            - grafana.robertharte.net
