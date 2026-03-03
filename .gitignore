@@ -7,4 +7,4 @@ hosts.old
 .certs
 
 # Ignore monitoring repo. Help resolve high CPU usage for cluster
-/clusters/staging/monitoring.yaml
+clusters/staging/monitoring.yaml
